@@ -74,3 +74,4 @@ new Web({
   compilationLevel: 'ADVANCED_OPTIMIZATIONS',
   outputMode: 'compiled'
 });
+
