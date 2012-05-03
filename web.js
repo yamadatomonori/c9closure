@@ -64,7 +64,9 @@ Web.prototype = {
    * @this {Web}
    */
   execCallback: function(error, stdout, stderr) {
+        console.log(22222);
     this.app.get('/' , function(request, response) {
+        console.log(33333);
       if (error) {
         response.send(stdout);
       } else {
