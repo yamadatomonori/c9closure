@@ -48,7 +48,7 @@ Web.prototype = {
 
     var self = this;
 
-    command = 'cake';
+    command = './node_modules/coffee-script/bin/cake';
     
     require('child_process').exec(command, function(error, stdout, stderr) {
       self.execCallback.call(self, error, stdout, stderr);
