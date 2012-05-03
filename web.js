@@ -51,6 +51,7 @@ Web.prototype = {
     //command = 'python -h';
     
     require('child_process').exec(command, function(error, stdout, stderr) {
+        console.log(11111);
       self.execCallback.call(self, error, stdout, stderr);
     });
   },
