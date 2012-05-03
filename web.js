@@ -68,9 +68,9 @@ Web.prototype = {
     this.app.get('/' , function(request, response) {
         console.log(33333);
       if (error) {
-        response.send(stdout);
-      } else {
         response.send(stderr);
+      } else {
+        response.send(stdout);
       }
     });
   }
