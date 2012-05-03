@@ -48,10 +48,9 @@ Web.prototype = {
 
     var self = this;
 
-    //command = 'python -h';
+    command = 'python -h';
     
     require('child_process').exec(command, function(error, stdout, stderr) {
-        console.log(11111);
       self.execCallback.call(self, error, stdout, stderr);
     });
   },
@@ -64,9 +63,7 @@ Web.prototype = {
    * @this {Web}
    */
   execCallback: function(error, stdout, stderr) {
-        console.log(22222);
     this.app.get('/' , function(request, response) {
-        console.log(33333);
       if (error) {
         response.send(stderr);
       } else {
