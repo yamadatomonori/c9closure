@@ -48,7 +48,7 @@ Web.prototype = {
 
     var self = this;
 
-    command = 'python -h';
+    command = 'cake';
     
     require('child_process').exec(command, function(error, stdout, stderr) {
       self.execCallback.call(self, error, stdout, stderr);
