@@ -38,7 +38,6 @@ Web.prototype = {
    */
   compile: function() {
     var command = 'python closure-library/closure/bin/build/closurebuilder.py ' +
-    '--compiler_flags="--js_code=alert(111);" ' +
     '--compiler_flags="--compilation_level=' + this.getPreference('compilationLevel') + '" ' +
     '--compiler_flags="--output_wrapper=(function() {%output%})();" ' +
     '--compiler_jar=compiler.jar ' + 
@@ -49,6 +48,8 @@ Web.prototype = {
 
     var self = this;
 
+    command = 'cake';
+    
     require('child_process').exec(command, function(error, stdout, stderr) {
       self.execCallback.call(self, error, stdout, stderr);
     });
