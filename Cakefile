@@ -10,7 +10,5 @@ command = 'python closure-library/closure/bin/build/closurebuilder.py
  --root=closure-library/
  --root=client/'
 
-sys.puts command
-
 exec command, ->
     console.log arguments
