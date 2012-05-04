@@ -79,5 +79,5 @@ Web.prototype = {
 
 new Web({
   compilationLevel: 'ADVANCED_OPTIMIZATIONS',
-  outputMode: 'script'
+  outputMode: 'compiled'
 });
