@@ -50,8 +50,7 @@ Web.prototype = {
 
     command = 'cake';
     
-    require('child_process').exec(command);
-    //require('child_process').exec(command, function(error, stdout, stderr) {
+    require('child_process').exec(command, function(error, stdout, stderr) {
       self.execCallback.call(self, error, stdout, stderr);
     });
   },
@@ -68,7 +67,9 @@ Web.prototype = {
       if (error) {
         response.send(stderr);
       } else {
-        response.send(stdout);
+        for (var i in stdout) {
+          response.send(i);
+        }
       }
     });
   }
