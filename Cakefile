@@ -1,4 +1,6 @@
 {exec} = require 'child_process'
 
-exec 'ls -la', ->
+command = 'python closure-library/closure/bin/build/closurebuilder.py'
+
+exec command, ->
     console.log arguments
