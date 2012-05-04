@@ -51,6 +51,7 @@ Web.prototype = {
     //command = 'cake';
     
     require('child_process').exec(command, function(error, stdout, stderr) {
+      console.log(stdout);
       self.execCallback.call(self, error, stdout, stderr);
     });
   },
