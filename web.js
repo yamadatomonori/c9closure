@@ -51,7 +51,6 @@ Web.prototype = {
     //command = 'cake';
     
     require('child_process').exec(command, function(error, stdout, stderr) {
-      console.log(stdout);
       self.execCallback.call(self, error, stdout, stderr);
     });
   },
@@ -66,6 +65,7 @@ Web.prototype = {
   execCallback: function(error, stdout, stderr) {
     this.app.get('/' , function(request, response) {
       response.send(stdout);
+      console.log(stdout);
         /*
       if (error) {
         response.send(stderr);
