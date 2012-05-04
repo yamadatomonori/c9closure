@@ -67,9 +67,7 @@ Web.prototype = {
       if (error) {
         response.send(stderr);
       } else {
-        for (var i in stdout) {
-          response.send(i);
-        }
+        response.send(stdout);
       }
     });
   }
