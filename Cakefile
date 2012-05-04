@@ -10,5 +10,5 @@ command = 'python closure-library/closure/bin/build/closurebuilder.py
  --root=closure-library/
  --root=client/'
 
-exec command, ->
-    sys.puts arguments
+exec command, (error, stdout, stderr) ->
+    sys.puts if error? then stderr else stdout
