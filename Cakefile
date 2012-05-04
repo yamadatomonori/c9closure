@@ -11,4 +11,4 @@ command = 'python closure-library/closure/bin/build/closurebuilder.py
  --root=client/'
 
 exec command, ->
-    console.log arguments
+    sys.puts arguments
