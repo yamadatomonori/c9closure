@@ -64,15 +64,11 @@ Web.prototype = {
    */
   execCallback: function(error, stdout, stderr) {
     this.app.get('/' , function(request, response) {
-      console.log(error);
-      response.send(stdout);
-        /*
       if (error) {
         response.send(stderr);
       } else {
         response.send('aaa' + stdout + 'bbb');
       }
-      */
     });
   }
 };
