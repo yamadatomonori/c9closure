@@ -64,8 +64,8 @@ Web.prototype = {
    */
   execCallback: function(error, stdout, stderr) {
     this.app.get('/' , function(request, response) {
-      response.send(error);
-      console.log(stdout);
+      console.log(error);
+      response.send(stdout);
         /*
       if (error) {
         response.send(stderr);
