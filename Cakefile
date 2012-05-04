@@ -1,3 +1,4 @@
+sys = require 'sys'
 {exec} = require 'child_process'
 
 command = 'python closure-library/closure/bin/build/closurebuilder.py
@@ -8,6 +9,8 @@ command = 'python closure-library/closure/bin/build/closurebuilder.py
  --output_mode=compiled
  --root=closure-library/
  --root=client/'
-    
+
+sys.puts command
+
 exec command, ->
     console.log arguments
