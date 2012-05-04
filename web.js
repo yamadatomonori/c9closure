@@ -63,7 +63,7 @@ Web.prototype = {
    * @this {Web}
    */
   execCallback: function(error, stdout, stderr) {
-    this.app.get('/' , function(request, response) {
+    this.app.get('/compiled.js' , function(request, response) {
       if (error) {
         response.send(stderr);
       } else {
