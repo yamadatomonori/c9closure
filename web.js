@@ -68,7 +68,7 @@ Web.prototype = {
         response.send(stderr);
       } else {
         response.contentType('js');
-        response.send('stdout');
+        response.send(stdout);
       }
     });
   }
