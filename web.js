@@ -68,8 +68,8 @@ Web.prototype = {
         response.send(stderr);
       } else {
         //response.send('aaa' + stdout + 'bbb');
-        response.contentType('text/plain');
-        //response.contentType('application/json');
+        //response.contentType('text/plain');
+        response.contentType('js');
         response.send('aaa<bbb');
       }
     });
