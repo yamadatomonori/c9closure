@@ -69,6 +69,7 @@ Web.prototype = {
       } else {
         //response.send('aaa' + stdout + 'bbb');
         //response.contentType('text/javascript');
+        response.contentType('application/x-javascript');
         response.send('aaa<bbb');
       }
     });
