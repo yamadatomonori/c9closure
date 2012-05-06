@@ -69,7 +69,7 @@ Web.prototype = {
       } else {
         //response.send('aaa' + stdout + 'bbb');
         //response.contentType('text/javascript');
-        response.contentType('application/x-javascript');
+        response.contentType('application/json');
         response.send('aaa<bbb');
       }
     });
