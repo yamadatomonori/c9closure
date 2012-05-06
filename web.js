@@ -1,16 +1,7 @@
 /**
  * @constructor
- * @param {Object} arg preference of building.
  */
-function Web(arg) {
-    
-  /**
-   * @param {string} key key of preference.
-   */
-  this.getPreference = function(key) {
-    return arg[key];
-  };
-      
+function Web() {
   this.init.call(this);
 }
 
@@ -64,7 +55,4 @@ Web.prototype = {
 };
 
 
-new Web({
-  compilationLevel: 'ADVANCED_OPTIMIZATIONS',
-  outputMode: 'compiled'
-});
+new Web;
