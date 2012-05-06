@@ -37,20 +37,9 @@ Web.prototype = {
    * @this {Web}
    */
   compile: function() {
-    var command = 'python closure-library/closure/bin/build/closurebuilder.py ' +
-    '--compiler_flags="--compilation_level=' + this.getPreference('compilationLevel') + '" ' +
-    '--compiler_flags="--output_wrapper=(function() {%output%})();" ' +
-    '--compiler_jar=compiler.jar ' + 
-    '--namespace="myproject.start" ' +
-    '--output_mode=' + this.getPreference('outputMode') + ' ' +
-    '--root=closure-library/ ' +
-    '--root=client/';
-
     var self = this;
-
-    command = 'cake build';
     
-    require('child_process').exec(command, function(error, stdout, stderr) {
+    require('child_process').exec('cake build', function(error, stdout, stderr) {
       self.execCallback.call(self, error, stdout, stderr);
     });
   },
@@ -63,7 +52,7 @@ Web.prototype = {
    * @this {Web}
    */
   execCallback: function(error, stdout, stderr) {
-    this.app.get('/compiled.js' , function(request, response) {
+    this.app.get('/' , function(request, response) {
       if (error) {
         response.send(stderr);
       } else {
