@@ -48,7 +48,7 @@ Web.prototype = {
 
     var self = this;
 
-    command = 'cake -build';
+    command = 'cake build';
     
     require('child_process').exec(command, function(error, stdout, stderr) {
       self.execCallback.call(self, error, stdout, stderr);
