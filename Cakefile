@@ -8,7 +8,7 @@ task 'templates', 'convert soy into js', ->
   exec command, (error, stdout, stderr) ->
       sys.print if error? then stderr else stdout
       
-  command = 'ls /tmp'
+  command = 'ls -la /tmp'
     
   exec command, (error, stdout, stderr) ->
       sys.print if error? then stderr else stdout
