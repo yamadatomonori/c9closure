@@ -1,6 +1,19 @@
 sys = require 'sys'
 {exec} = require 'child_process'
 
+
+task 'templates', 'convert soy into js', ->
+  command = 'touch /tmp/test'
+    
+  exec command, (error, stdout, stderr) ->
+      sys.print if error? then stderr else stdout
+      
+  command = 'ls /tmp'
+    
+  exec command, (error, stdout, stderr) ->
+      sys.print if error? then stderr else stdout
+      
+      
 task 'build', 'building closure library script', ->
   command = 'python closure-library/closure/bin/build/closurebuilder.py
     --compiler_flags="--compilation_level=ADVANCED_OPTIMIZATIONS"
