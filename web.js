@@ -30,7 +30,8 @@ Web.prototype = {
   compile: function() {
     var self = this;
     
-    require('child_process').exec('cake build', function(error, stdout, stderr) {
+    //require('child_process').exec('cake build', function(error, stdout, stderr) {
+    require('child_process').exec('cake templates', function(error, stdout, stderr) {
       self.execCallback.call(self, error, stdout, stderr);
     });
   },
