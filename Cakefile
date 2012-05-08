@@ -4,7 +4,7 @@ Q = require 'q'
 
 
 task 'Q', 'q test', ->
-  exec 'ls', (error, stdout, stderr) ->
+  exec 'sleep 5', (error, stdout, stderr) ->
       exec 'ls', (error, stdout, stderr) ->
           sys.print stdout
   
