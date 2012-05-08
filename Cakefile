@@ -4,7 +4,7 @@ Q = require 'q'
 
 
 task 'Q', 'q test', ->
-  Q.fcall(exec 'sleep 5')
+  Q.all(exec 'sleep 5')
     .then (exec 'ls', (error, stdout, stderr) ->
         sys.print stdout
     )
