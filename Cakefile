@@ -10,13 +10,12 @@ task 'Q2', 'q test', ->
     muffin.exec 'sleep 4 && touch /tmp/test2'
     
 task 'Q', 'q test', ->
-    Q.when Q.all [
+    Q.when Q.all([
         (invoke 'Q1')[1]
         (invoke 'Q2')[1]
-    ], (result) ->
+    ]), (result) ->
       Q.when (muffin.exec 'ls /tmp')[1], (result) ->
-        sys.print(result[0])
-        sys.print(result[1])
+        sys.print result[0]
   
       
      
@@ -28,14 +27,16 @@ task 'templates', 'convert soy into js', ->
   
     
 task 'builder', 'building closure library script', ->
-  command = 'python closure-library/closure/bin/build/closurebuilder.py
-    --compiler_flags="--compilation_level=ADVANCED_OPTIMIZATIONS"
-    --compiler_flags="--output_wrapper=(function() {%output%})();" 
-    --compiler_jar=compiler.jar
-    --namespace="myproject.start" 
-    --output_mode=compiled
-    --root=closure-library/
-    --root=client/'
+  Q.when Q.all([
+  ]), (result) ->
+    command = 'python closure-library/closure/bin/build/closurebuilder.py
+      --compiler_flags="--compilation_level=ADVANCED_OPTIMIZATIONS"
+      --compiler_flags="--output_wrapper=(function() {%output%})();" 
+      --compiler_jar=compiler.jar
+      --namespace="myproject.start" 
+      --output_mode=compiled
+      --root=closure-library/
+      --root=client/'
 
-  exec command, (error, stdout, stderr) ->
-      sys.print if error? then stderr else stdout
+    Q.when (muffin.exec command)[1], (result) ->
+      sys.print result[1]
