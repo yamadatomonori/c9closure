@@ -5,7 +5,7 @@ Q = require 'q'
 
 task 'Q', 'q test', ->
   Q.call( ->
-      exec 'touch /tmp/test')
+      exec 'sleep 3 && touch /tmp/test')
     .then ( ->
         exec 'ls /tmp', (error, stdout, stderr) ->
           sys.print stdout)
