@@ -7,11 +7,8 @@ task 'Q', 'q test', ->
   Q.all([      
     exec 'sleep 3 && touch /tmp/qtest1',
     exec 'sleep 3 && touch /tmp/qtest2'
-  ]);
-    
-  command = 'ls -la /tmp'
-    
-  exec command, (error, stdout, stderr) ->
+  ]).spread ->
+    exec 'ls -la /tmp', (error, stdout, stderr) ->
       sys.print if error? then stderr else stdout
       
 task 'templates', 'convert soy into js', ->
