@@ -4,9 +4,10 @@ Q = require 'q'
 
 
 task 'Q', 'q test', ->
-  exec 'sleep 5', (error, stdout, stderr) ->
-      exec 'ls', (error, stdout, stderr) ->
-          sys.print stdout
+  Q.fcall(exec 'sleep 5')
+    .then (exec 'ls', (error, stdout, stderr) ->
+        sys.print stdout
+    )
   
       
 task 'templates', 'convert soy into js', ->
