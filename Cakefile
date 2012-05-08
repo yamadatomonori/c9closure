@@ -4,7 +4,7 @@ Q = require 'q'
 
 
 task 'Q', 'q test', ->
-    muffin.exec 'sleep 3'
+    q = muffin.exec 'sleep 3'
     Q.when q[1], (result) ->
         sys.print(result[0])
         sys.print(result[1])
