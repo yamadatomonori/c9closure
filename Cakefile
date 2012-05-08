@@ -5,7 +5,7 @@ Q = require 'q'
 
 task 'Q', 'q test', ->
   exec 'ls', (error, stdout, stderr) ->
-      exec 'echo awake'
+      exec 'ls'
   
       
 task 'templates', 'convert soy into js', ->
