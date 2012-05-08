@@ -3,29 +3,22 @@ sys = require 'sys'
 Q = require 'q'
 
 
-task 'Q', 'q test', ->
+task 'Q1', 'q test', ->
     q1 = muffin.exec 'sleep 3 && touch /tmp/test1'
     q2 = muffin.exec 'sleep 4 && touch /tmp/test2'
     
     Q.when Q.all([q1[1], q2[1]]), (result) ->
-        q = muffin.exec 'ls /tmp'
+        invoke 'Q2'
+    
+task 'Q2', 'q test', ->
+    q = muffin.exec 'ls /tmp'
         
-        Q.when q[1], (result) ->
-          sys.print(result[0])
-          sys.print(result[1])
+    Q.when q[1], (result) ->
+      sys.print(result[0])
+      sys.print(result[1])
   
       
-task 'templates', 'convert soy into js', ->
-  command = 'touch /tmp/test'
-    
-  exec command, (error, stdout, stderr) ->
-      sys.print if error? then stderr else stdout
-      
-  command = 'ls -la /tmp'
-    
-  exec command, (error, stdout, stderr) ->
-      sys.print if error? then stderr else stdout
-      
+     
       
 task 'build', 'building closure library script', ->
   command = 'python closure-library/closure/bin/build/closurebuilder.py
