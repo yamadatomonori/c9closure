@@ -1,14 +1,13 @@
+muffin = require 'muffin'
 sys = require 'sys'
-{exec} = require 'child_process'
 Q = require 'q'
 
 
 task 'Q', 'q test', ->
-  Q.call( ->
-      exec 'sleep 3 && touch /tmp/test')
-    .then ( ->
-        exec 'ls /tmp', (error, stdout, stderr) ->
-          sys.print stdout)
+    muffin.exec 'sleep 3'
+    Q.when q[1], (result) ->
+        sys.print(result[0])
+        sys.print(result[1])
   
       
 task 'templates', 'convert soy into js', ->
