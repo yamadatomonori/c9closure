@@ -28,6 +28,7 @@ task 'templates', 'convert soy into js', ->
     
 task 'builder', 'building closure library script', ->
   Q.when Q.all([
+      (invoke 'templates')[1]
   ]), (result) ->
     command = 'python closure-library/closure/bin/build/closurebuilder.py
       --compiler_flags="--compilation_level=ADVANCED_OPTIMIZATIONS"
@@ -39,4 +40,4 @@ task 'builder', 'building closure library script', ->
       --root=client/'
 
     Q.when (muffin.exec command)[1], (result) ->
-      sys.print result[1]
+      sys.print result[0]
