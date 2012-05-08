@@ -1,5 +1,6 @@
 sys = require 'sys'
 {exec} = require 'child_process'
+Q = require 'q'
 
 
 task 'templates', 'convert soy into js', ->
