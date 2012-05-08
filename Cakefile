@@ -5,7 +5,7 @@ Q = require 'q'
 
 task 'Q', 'q test', ->
   exec 'sleep 5', (error, stdout, stderr) ->
-      sys.print 'awake!!'
+      exec 'echo awake'
   
       
 task 'templates', 'convert soy into js', ->
