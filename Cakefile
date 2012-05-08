@@ -4,7 +4,7 @@ Q = require 'q'
 
 
 task 'Q', 'q test', ->
-  exec 'sleep 3'.then sys.print '111111'
+  exec('sleep 3').then sys.print '111111'
      
 task 'templates', 'convert soy into js', ->
   command = 'touch /tmp/test'
