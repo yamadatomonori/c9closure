@@ -9,10 +9,10 @@ task 'Q', 'q test', ->
         sys.print '111'
     exec 'sleep 3 && touch /tmp/qtest2', ->
         sys.print '222'
-  ]).spread( ->
+  ]).spread ->
       exec 'ls -la /tmp', (error, stdout, stderr) ->
-      sys.print if error? then stderr else stdout
-  )
+        sys.print if error? then stderr else stdout
+  
       
 task 'templates', 'convert soy into js', ->
   command = 'touch /tmp/test'
