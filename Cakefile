@@ -10,10 +10,11 @@ task 'Q2', 'q test', ->
     muffin.exec 'sleep 4 && touch /tmp/test2'
     
 task 'Q', 'q test', ->
-    Q.when Q.all([(invoke 'Q1')[1], (invoke 'Q2')[1]]), (result) ->
-      q = muffin.exec 'ls /tmp'
-        
-      Q.when q[1], (result) ->
+    Q.when Q.all([
+        (invoke 'Q1')[1]
+        (invoke 'Q2')[1]
+    ]), (result) ->
+      Q.when (muffin.exec 'ls /tmp')[1], (result) ->
         sys.print(result[0])
         sys.print(result[1])
   
