@@ -4,10 +4,15 @@ Q = require 'q'
 
 
 task 'Q', 'q test', ->
-    q = muffin.exec 'sleep 3 && ls'
-    Q.when q[1], (result) ->
-        sys.print(result[0])
-        sys.print(result[1])
+    q1 = muffin.exec 'sleep 3 && touch /tmp/test1'
+    q2 = muffin.exec 'sleep 4 && touch /tmp/test2'
+    
+    Q.when Q.all([q1[1], q2[1]]), (result) ->
+        q = muffin.exec 'ls /tmp'
+        
+        Q.when q[1], (result) ->
+          sys.print(result[0])
+          sys.print(result[1])
   
       
 task 'templates', 'convert soy into js', ->
