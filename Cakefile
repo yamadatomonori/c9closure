@@ -5,9 +5,9 @@ Q = require 'q'
 
 task 'Q', 'q test', ->
   Q.all([      
-    exec 'sleep 3 && touch /tmp/qtest1', ->
+    exec 'sleep 10 && touch /tmp/qtest1', ->
         sys.print '111'
-    exec 'sleep 3 && touch /tmp/qtest2', ->
+    exec 'sleep 10 && touch /tmp/qtest2', ->
         sys.print '222'
   ]).spread ->
       exec 'ls -la /tmp', (error, stdout, stderr) ->
