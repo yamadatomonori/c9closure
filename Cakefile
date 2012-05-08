@@ -3,6 +3,17 @@ sys = require 'sys'
 Q = require 'q'
 
 
+task 'Q', 'q test', ->
+  Q.all([      
+    exec 'touch /tmp/qtest1',
+    exec 'touch /tmp/qtest2'
+  ]);
+    
+  command = 'ls -la /tmp'
+    
+  exec command, (error, stdout, stderr) ->
+      sys.print if error? then stderr else stdout
+      
 task 'templates', 'convert soy into js', ->
   command = 'touch /tmp/test'
     
