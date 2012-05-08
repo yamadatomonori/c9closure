@@ -25,8 +25,7 @@ task 'templates', 'convert soy into js', ->
   
   q = muffin.exec command
   
-  sys.print q[1]
-  q
+  sys.print q
   
     
 task 'builder', 'building closure library script', ->
