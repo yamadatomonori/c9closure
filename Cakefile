@@ -4,14 +4,9 @@ Q = require 'q'
 
 
 task 'Q', 'q test', ->
-  Q.all([      
-    exec 'sleep 10 && touch /tmp/qtest1', ->
-        sys.print '111'
-    exec 'sleep 10 && touch /tmp/qtest2', ->
-        sys.print '222'
-  ]).spread ->
+  Q.all([exec 'sleep 10 && touch /tmp/qtest1', exec 'sleep 10 && touch /tmp/qtest2']).then ->
       exec 'ls -la /tmp', (error, stdout, stderr) ->
-        sys.print if error? then stderr else stdout
+          sys.print if error? then stderr else stdout
   
       
 task 'templates', 'convert soy into js', ->
