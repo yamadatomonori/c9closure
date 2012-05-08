@@ -5,8 +5,8 @@ Q = require 'q'
 
 task 'Q', 'q test', ->
   Q.all([      
-    exec 'touch /tmp/qtest1',
-    exec 'touch /tmp/qtest2'
+    exec 'sleep 3 && touch /tmp/qtest1',
+    exec 'sleep 3 && touch /tmp/qtest2'
   ]);
     
   command = 'ls -la /tmp'
