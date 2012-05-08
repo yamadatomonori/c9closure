@@ -5,7 +5,8 @@ Q = require 'q'
 
 task 'Q', 'q test', ->
   exec 'ls', (error, stdout, stderr) ->
-      exec 'ls'
+      exec 'ls', (error, stdout, stderr) ->
+          sys.print stdout
   
       
 task 'templates', 'convert soy into js', ->
