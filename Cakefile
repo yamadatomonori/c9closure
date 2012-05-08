@@ -25,8 +25,7 @@ task 'templates', 'convert soy into js', ->
   
   q = muffin.exec command
   
-  sys.print q[0][0]
-  sys.print q[0][1]
+  sys.print q[1]
   q
   
     
