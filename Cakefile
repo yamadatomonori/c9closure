@@ -4,23 +4,19 @@ Q = require 'q'
 
       
 task 'templates', 'convert soy into js', ->
-  q = muffin.exec 'java -jar ./jar/SoyToJsSrcCompiler.jar
+  muffin.exec 'java -jar ./jar/SoyToJsSrcCompiler.jar
     --shouldGenerateJsdoc
     --shouldProvideRequireSoyNamespaces
     --cssHandlingScheme GOOG
     --outputPathFormat client/js/{INPUT_FILE_NAME_NO_EXT}Templates.js
     ./client/soy/AmbBlogPostUcs.soy'
   
-  Q.when q[1], (result) ->
-      sys.puts result
   
     
 task 'builder', 'building closure library script', ->
   Q.when Q.all([
       (invoke 'templates')[1]
   ]), (result) ->
-    sys.puts result[1]
-    
     command = 'python closure-library/closure/bin/build/closurebuilder.py
       --compiler_flags="--compilation_level=ADVANCED_OPTIMIZATIONS"
       --compiler_flags="--output_wrapper=(function() {%output%})();" 
