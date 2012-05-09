@@ -21,7 +21,7 @@ task 'Q', 'q test', ->
 task 'templates', 'convert soy into js', ->
   q = muffin.exec 'java -jar ./jar/SoyToJsSrcCompiler.jar'
   
-  Q.wher q[1], (result) ->
+  Q.when q[1], (result) ->
       sys.puts result
   
     
