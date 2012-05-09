@@ -19,7 +19,12 @@ task 'Q', 'q test', ->
   
       
 task 'templates', 'convert soy into js', ->
-  q = muffin.exec 'java -jar ./jar/SoyToJsSrcCompiler.jar'
+  q = muffin.exec 'java -jar ./jar/SoyToJsSrcCompiler.jar
+    --shouldGenerateJsdoc
+    --shouldProvideRequireSoyNamespaces
+    --cssHandlingScheme GOOG
+    --outputPathFormat client/js/{INPUT_FILE_NAME_NO_EXT}Templates.js
+    ./client/soy/AmbBlogPostUcs.soy'
   
   Q.when q[1], (result) ->
       sys.puts result
@@ -37,8 +42,7 @@ task 'builder', 'building closure library script', ->
       --compiler_jar=./jar/compiler.jar
       --namespace="myproject.start" 
       --output_mode=compiled
-      --root=closure-library/
-      --root=client/'
+      --root=client/js'
 
     Q.when (muffin.exec command)[1], (result) ->
       sys.print result[0]
