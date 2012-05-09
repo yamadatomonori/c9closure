@@ -23,8 +23,11 @@ task 'Q', 'q test', ->
 task 'templates', 'convert soy into js', ->
   q = muffin.exec 'java -jar ./jar/SoyToJsSrcCompiler.jar'
   
-  sys.puts(q[0].toSource())
-  sys.puts(q[1].toSource())
+  for key in q[0]
+    sys.puts key
+  
+  for key in q[1]
+    sys.puts key
   
   
     
