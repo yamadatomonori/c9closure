@@ -23,7 +23,8 @@ task 'Q', 'q test', ->
 task 'templates', 'convert soy into js', ->
   q = muffin.exec 'java -jar ./jar/SoyToJsSrcCompiler.jar'
   
-  sys.puts typeof q[1]
+  for key in q[1]
+    sys.puts key
   
   
     
