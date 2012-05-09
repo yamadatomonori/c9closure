@@ -18,11 +18,8 @@ task 'Q', 'q test', ->
         sys.print result[0]
   
       
-     
-      
 task 'templates', 'convert soy into js', ->
-  q = muffin.exec 'java'
-  
+  muffin.exec 'java -jar ./jar/SoyToJsSrcCompiler.jar'
   
     
 task 'builder', 'building closure library script', ->
