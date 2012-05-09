@@ -3,12 +3,31 @@ sys = require 'sys'
 Q = require 'q'
 
       
+task 'stylesheets', 'convert gss into css', ->
+  muffin.exec 'java -jar jar/closure-stylesheets.jar
+  --output-file client/css/blog_post.gss.css
+  --output-renaming-map client/js/renaming_map.js
+  --output-renaming-map-format CLOSURE_COMPILED
+  --rename CLOSURE
+  
+  ./client/js/closure-library/closure/goog/css/common.css
+  ./client/js/closure-library/closure/goog/css/button.css
+  ./client/js/closure-library/closure/goog/css/menu.css
+  ./client/js/closure-library/closure/goog/css/menuitem.css
+  ./client/js/closure-library/closure/goog/css/toolbar.css
+  ./client/js/closure-library/closure/goog/css/colormenubutton.css
+  ./client/js/closure-library/closure/goog/css/palette.css
+  ./client/js/closure-library/closure/goog/css/colorpalette.css
+  ./client/js/closure-library/closure/goog/css/editortoolbar.css'
+  
+  
 task 'templates', 'convert soy into js', ->
   muffin.exec 'java -jar ./jar/SoyToJsSrcCompiler.jar
     --shouldGenerateJsdoc
     --shouldProvideRequireSoyNamespaces
     --cssHandlingScheme GOOG
     --outputPathFormat client/js/{INPUT_FILE_NAME_NO_EXT}Templates.js
+    
     ./client/soy/AmbBlogPostUcs.soy'
   
   

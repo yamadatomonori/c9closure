@@ -31,7 +31,6 @@ Web.prototype = {
     var self = this;
     
     require('child_process').exec('cake builder', function(error, stdout, stderr) {
-    //require('child_process').exec('cake Q1', function(error, stdout, stderr) {
       self.execCallback.call(self, error, stdout, stderr);
     });
   },
