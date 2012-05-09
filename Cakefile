@@ -21,17 +21,16 @@ task 'Q', 'q test', ->
      
       
 task 'templates', 'convert soy into js', ->
-  command = 'java -jar ./jar/SoyToJsSrcCompiler.jar'
+  muffin.exec 'java -jar ./jar/SoyToJsSrcCompiler.jar'
   
-  q = muffin.exec command
-  
-  sys.puts std for std in q[1]
   
     
 task 'builder', 'building closure library script', ->
   Q.when Q.all([
       (invoke 'templates')[1]
   ]), (result) ->
+    sys.puts result[1]
+    
     command = 'python closure-library/closure/bin/build/closurebuilder.py
       --compiler_flags="--compilation_level=ADVANCED_OPTIMIZATIONS"
       --compiler_flags="--output_wrapper=(function() {%output%})();" 
