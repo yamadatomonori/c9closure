@@ -33,6 +33,7 @@ task 'templates', 'convert soy into js', ->
     
 task 'builder', 'building closure library script', ->
   Q.when Q.all([
+      (invoke 'stylesheets')[1]
       (invoke 'templates')[1]
   ]), (result) ->
     command = 'python closure-library/closure/bin/build/closurebuilder.py
