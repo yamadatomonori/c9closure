@@ -30,7 +30,6 @@ task 'templates', 'convert soy into js', ->
     
     ./client/soy/AmbBlogPostUcs.soy'
   
-  
     
 task 'builder', 'building closure library script', ->
   Q.when Q.all([
