@@ -47,6 +47,7 @@ task 'builder', 'building closure library script', ->
 
     command = 'ls -la ./client/js && ls -la ./client/css'
     command = 'cat client/css/blog_post.gss.css'
+    command = 'cat client/js/compiled.js'
     
     Q.when (muffin.exec command)[1], (result) ->
       sys.print result[0]
