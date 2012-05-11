@@ -5,7 +5,7 @@ Q = require 'q'
       
 task 'stylesheets', 'convert gss into css', ->
   muffin.exec 'java -jar jar/closure-stylesheets.jar
-    --output-file client/css/blog_post.gss.css
+    --output-file client/css/compiled.css
     --output-renaming-map client/js/renaming_map.js
     --output-renaming-map-format CLOSURE_COMPILED
     --rename CLOSURE

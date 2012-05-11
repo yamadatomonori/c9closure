@@ -45,21 +45,29 @@ Web.prototype = {
   builderCallback: function(error, stdout, stderr) {
     var self = this;
     
-    require('child_process').exec('cat client/css/blog_post.gss.css', function(error, stdout, stderr) {
-      self.mapPath.call(self, '/', error, stdout, stderr);
+    require('child_process').exec('cat client/js/compiled.js', function(error, stdout, stderr) {
+      self.mapPath.call(self, '/blog_post.js', 'js', error, stdout, stderr);
+    });
+    
+    require('child_process').exec('cat client/css/compiled.css', function(error, stdout, stderr) {
+      self.mapPath.call(self, '/blog_post.css', 'css', error, stdout, stderr);
     });
   },
   
   
   /**
    * @param {string} path .
+   * @param {string} type .
+   * @param {string} error .
+   * @param {string} stdout .
+   * @param {string} stderr .
    */
-  mapPath: function(path, error, stdout, stderr) {
+  mapPath: function(path, type, error, stdout, stderr) {
     this.app.get(path , function(request, response) {
       if (error) {
         response.send(stderr);
       } else {
-        response.contentType('js');
+        response.contentType(type);
         response.send(stdout);
       }
     });
