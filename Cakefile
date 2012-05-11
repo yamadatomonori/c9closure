@@ -41,6 +41,7 @@ task 'builder', 'building closure library script', ->
       --compiler_flags="--output_wrapper=(function() {%output%})();" 
       --compiler_jar=./jar/compiler.jar
       --namespace="myproject.start" 
+      --output_file=./client/js/compiled.js
       --output_mode=compiled
       --root=client/js'
 
