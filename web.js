@@ -30,7 +30,9 @@ Web.prototype = {
   compile: function() {
     var self = this;
     
+    console.log(111);
     require('child_process').exec('cake builder', function(error, stdout, stderr) {
+    console.log(222);
       self.builderCallback.call(self, error, stdout, stderr);
     });
   },
@@ -43,9 +45,11 @@ Web.prototype = {
    * @this {Web}
    */
   builderCallback: function(error, stdout, stderr) {
+    console.log(333);
     var self = this;
     
     require('child_process').exec('cat client/css/blog_post.gss.css', function(error, stdout, stderr) {
+    console.log(444);
       self.app.get('/' , function(request, response) {
         if (error) {
           response.send(stderr);
