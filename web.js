@@ -31,7 +31,7 @@ Web.prototype = {
     var self = this;
     
     require('child_process').exec('cake builder', function(error, stdout, stderr) {
-      self.execCallback.call(self, error, stdout, stderr);
+      self.builderCallback.call(self, error, stdout, stderr);
     });
   },
 
@@ -42,14 +42,18 @@ Web.prototype = {
    * @param {string} stderr .
    * @this {Web}
    */
-  execCallback: function(error, stdout, stderr) {
-    this.app.get('/' , function(request, response) {
-      if (error) {
-        response.send(stderr);
-      } else {
-        response.contentType('js');
-        response.send(stdout);
-      }
+  builderCallback: function(error, stdout, stderr) {
+    var self = this;
+    
+    require('child_process').exec('cat client/css/blog_post.gss.css', function(error, stdout, stderr) {
+      self.app.get('/' , function(request, response) {
+        if (error) {
+          response.send(stderr);
+        } else {
+          response.contentType('js');
+          response.send(stdout);
+        }
+      });
     });
   }
 };
