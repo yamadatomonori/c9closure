@@ -36,7 +36,7 @@ task 'builder', 'building closure library script', ->
       (invoke 'stylesheets')[1]
       (invoke 'templates')[1]
   ]), (result) ->
-    command = 'python closure-library/closure/bin/build/closurebuilder.py
+    command = 'python client/js/closure-library/closure/bin/build/closurebuilder.py
       --compiler_flags="--compilation_level=ADVANCED_OPTIMIZATIONS"
       --compiler_flags="--output_wrapper=(function() {%output%})();" 
       --compiler_jar=./jar/compiler.jar
