@@ -28,6 +28,7 @@ task 'templates', 'convert soy into js', ->
     --cssHandlingScheme GOOG
     --outputPathFormat client/js/{INPUT_FILE_NAME_NO_EXT}Templates.js
     
+    ./client/soy/AmbBlogPostEditor.soy
     ./client/soy/AmbBlogPostUcs.soy'
   
     
