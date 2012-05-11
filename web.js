@@ -46,7 +46,7 @@ Web.prototype = {
     var self = this;
     
     require('child_process').exec('cat client/css/blog_post.gss.css', function(error, stdout, stderr) {
-      self.mapPath('/');
+      self.mapPath.call(self, '/', error, stdout, stderr);
     });
   },
   
@@ -54,7 +54,7 @@ Web.prototype = {
   /**
    * @param {string} path .
    */
-  mapPath: function(path) {
+  mapPath: function(path, error, stdout, stderr) {
     this.app.get(path , function(request, response) {
       if (error) {
         response.send(stderr);
