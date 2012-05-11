@@ -1,0 +1,54 @@
+{namespace Amb.Blog.Post.EditorTemplates autoescape="contextual"}
+
+
+/**
+ */
+{template .entryMain private="true"}
+  <div id="entryMain">
+    <span class="{css move}"></span>
+
+    {call .entryToolbar /}
+
+    <div class="{css editarea}"></div>
+
+    <p id="previewBtn"><a href="#" class="btnDefault {css btnDefault}">プレビュー</a></p>
+
+    <img src="about:blank" onerror="Amb.Blog.post.editor = new Amb.Blog.Post.Editor(this.parentNode);this.parentNode.removeChild(this);" />
+  </div>
+{/template}
+
+
+/**
+ */
+{template .entryToolbar private="true"}
+  <div class="{css entryToolbar}">
+  </div>
+{/template}
+
+
+
+/**
+ */
+{template .serviceTool}
+  <div id="serviceTool">
+    <ul>
+      <li id="visionPaste" title="動画を貼る">動画を貼る</li>
+      <li id="paco" title="おえかきする">おえかきする</li>
+      <li id="magicalmaker" title="写真をかざる">写真をかざる</li>
+      <li id="fortune" title="今日の占いをのせる">今日の占いをのせる</li>
+    </ul>
+  </div>
+{/template}
+
+
+/**
+ */
+{template .affilTool}
+  <div id="affilTool">
+    <ul>
+      <li id="rakuten" title="楽天アフィリエイト" class="on">楽天アフィリエイト</li>
+      <li id="amazon" title="Amazon">Amazon</li>
+      <li id="itunes" title="iTunes">iTunes</li>
+    </ul>
+  </div>
+{/template}
