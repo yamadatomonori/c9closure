@@ -13,6 +13,7 @@ task 'stylesheets', 'convert gss into css', ->
     ./client/css/editme.gss
     
     ./client/closure-library/closure/goog/css/button.css
+    ./client/closure-library/closure/goog/css/common.css
     ./client/closure-library/closure/goog/css/dialog.css
     ./client/closure-library/closure/goog/css/linkbutton.css
     ./client/closure-library/closure/goog/css/menu.css
