@@ -47,12 +47,14 @@ task 'builder', 'building closure library script', ->
       (invoke 'templates')[1]
   ]), (result) ->
     command = 'python client/js/closure-library/closure/bin/build/closurebuilder.py
+      --compiler_flags="client/js/renaming_map.js"
       --compiler_flags="--compilation_level=ADVANCED_OPTIMIZATIONS"
       --compiler_flags="--output_wrapper=(function() {%output%})();" 
       --compiler_jar=./jar/compiler.jar
       --namespace="myproject.start" 
       --output_file=./client/js/compiled.js
       --output_mode=compiled
+      --root=client/closure-library
       --root=client/js'
     
     Q.when (muffin.exec command)[1], (result) ->
