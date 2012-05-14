@@ -9,16 +9,26 @@ task 'stylesheets', 'convert gss into css', ->
     --output-renaming-map client/js/renaming_map.js
     --output-renaming-map-format CLOSURE_COMPILED
     --rename CLOSURE
-  
-    ./client/js/closure-library/closure/goog/css/common.css
-    ./client/js/closure-library/closure/goog/css/button.css
-    ./client/js/closure-library/closure/goog/css/menu.css
-    ./client/js/closure-library/closure/goog/css/menuitem.css
-    ./client/js/closure-library/closure/goog/css/toolbar.css
-    ./client/js/closure-library/closure/goog/css/colormenubutton.css
-    ./client/js/closure-library/closure/goog/css/palette.css
-    ./client/js/closure-library/closure/goog/css/colorpalette.css
-    ./client/js/closure-library/closure/goog/css/editortoolbar.css'
+    
+    ./client/css/editme.gss
+    
+    ./client/closure-library/closure/goog/css/button.css
+    ./client/closure-library/closure/goog/css/dialog.css
+    ./client/closure-library/closure/goog/css/linkbutton.css
+    ./client/closure-library/closure/goog/css/menu.css
+    ./client/closure-library/closure/goog/css/menuitem.css
+    ./client/closure-library/closure/goog/css/menuseparator.css
+    ./client/closure-library/closure/goog/css/tab.css
+    ./client/closure-library/closure/goog/css/tabbar.css
+    ./client/closure-library/closure/goog/css/toolbar.css
+    ./client/closure-library/closure/goog/css/colormenubutton.css
+    ./client/closure-library/closure/goog/css/palette.css
+    ./client/closure-library/closure/goog/css/colorpalette.css
+
+    ./client/closure-library/closure/goog/css/editor/bubble.css
+    ./client/closure-library/closure/goog/css/editor/dialog.css
+    ./client/closure-library/closure/goog/css/editor/linkdialog.css
+    ./client/closure-library/closure/goog/css/editortoolbar.css'
   
   
 task 'templates', 'convert soy into js', ->
@@ -26,10 +36,9 @@ task 'templates', 'convert soy into js', ->
     --shouldGenerateJsdoc
     --shouldProvideRequireSoyNamespaces
     --cssHandlingScheme GOOG
-    --outputPathFormat client/js/{INPUT_FILE_NAME_NO_EXT}Templates.js
+    --outputPathFormat client/js/{INPUT_FILE_NAME_NO_EXT}.js
     
-    ./client/soy/AmbBlogPostEditor.soy
-    ./client/soy/AmbBlogPostUcs.soy'
+    ./client/soy/template.soy'
   
     
 task 'builder', 'building closure library script', ->

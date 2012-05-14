@@ -52,11 +52,11 @@ Web.prototype = {
     var self = this;
     
     this.exec('cat client/js/compiled.js', function(error, stdout, stderr) {
-      self.mapPath.call(self, '/blog_post.js', 'js', error, stdout, stderr);
+      self.mapPath.call(self, '/compiled.js', 'js', error, stdout, stderr);
     });
     
     this.exec('cat client/css/compiled.css', function(error, stdout, stderr) {
-      self.mapPath.call(self, '/blog_post.css', 'css', error, stdout, stderr);
+      self.mapPath.call(self, '/compiled.css', 'css', error, stdout, stderr);
     });
   },
   
