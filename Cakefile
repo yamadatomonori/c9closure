@@ -38,7 +38,7 @@ task 'templates', 'convert soy into js', ->
     --cssHandlingScheme GOOG
     --outputPathFormat client/js/{INPUT_FILE_NAME_NO_EXT}.js
     
-    ./client/soy/template.soy'
+    ./client/soy/templates.soy'
   
     
 task 'builder', 'building closure library script', ->
