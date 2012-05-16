@@ -7,6 +7,12 @@ function Web() {
 
 
 Web.prototype = {
+    
+  /**
+   * @type {object} .
+   */
+  exec: require('child_process').exec,
+  
 
   /**
    * @this {Web}
@@ -30,7 +36,7 @@ Web.prototype = {
   compile: function() {
     var self = this;
     
-    require('child_process').exec('cake builder', function(error, stdout, stderr) {
+    this.exec('cake builder', function(error, stdout, stderr) {
       self.builderCallback.call(self, error, stdout, stderr);
     });
   },
@@ -44,18 +50,34 @@ Web.prototype = {
    */
   builderCallback: function(error, stdout, stderr) {
     var self = this;
-      
-    require('child_process').exec('cat client/js/compiled.js', function(error, stdout, stderr) {
-      self.app.get('/' , function(request, response) {
-        if (error) {
-          response.send(stderr);
-        } else {
-          response.contentType('js');
-          response.send(stdout);
-        }
-      });
+    
+    this.exec('cat client/js/compiled.js', function(error, stdout, stderr) {
+      self.mapPath.call(self, '/compiled.js', 'js', error, stdout, stderr);
     });
-  }
+    
+    this.exec('cat client/css/compiled.css', function(error, stdout, stderr) {
+      self.mapPath.call(self, '/compiled.css', 'css', error, stdout, stderr);
+    });
+  },
+  
+  
+  /**
+   * @param {string} path .
+   * @param {string} type .
+   * @param {string} error .
+   * @param {string} stdout .
+   * @param {string} stderr .
+   */
+  mapPath: function(path, type, error, stdout, stderr) {
+    this.app.get(path , function(request, response) {
+      if (error) {
+        response.send(stderr);
+      } else {
+        response.contentType(type);
+        response.send(stdout);
+      }
+    });
+  } 
 };
 
 
